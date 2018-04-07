@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Informações Funcionais</title>
+</h:head>
+<h:body>
+
+	<h:form id="frm" enctype="multipart/form-data">
+
+		<p:growl id="messages" showDetail="true" />
+
+		<p:panelGrid columns="2">
+
+			<p:outputLabel value="Número do RG: "></p:outputLabel>
+			<p:inputMask id="rg" mask="9?999999999" size="10"
+				value="#{funcionarioBean.funcionario.rg}" readonly="true" />
+
+			<p:outputLabel value="Nome destacado: "></p:outputLabel>
+			<p:inputText id="nomeDestacado" size="30"
+				value="#{funcionarioBean.funcionario.nomeDestaque}" />
+
+			<p:outputLabel value="Complemento do Nome: "></p:outputLabel>
+			<p:inputText id="nomeComplemento" size="100"
+				value="#{funcionarioBean.funcionario.nomeComplemento}" />
+
+			<p:outputLabel value="Cargo: "></p:outputLabel>
+			<p:inputText id="cargo" size="100"
+				value="#{funcionarioBean.funcionario.cargo}" />
+
+			<p:outputLabel value="Local de trabalho: "></p:outputLabel>
+			<p:inputText id="nomeEscola" size="100"
+				value="#{funcionarioBean.funcionario.nomeEscola}" />
+
+			<p:outputLabel value="Telefone: "></p:outputLabel>
+			<p:inputMask id="telefone"
+				value="#{funcionarioBean.funcionario.telefone}"
+				mask="(99) 9999-9999" />
+
+			<p:outputLabel value="email: "></p:outputLabel>
+			<p:inputText id="email" size="100"
+				value="#{funcionarioBean.funcionario.email}" />
+
+			<p:outputLabel value="foto: "></p:outputLabel>
+			<p:inputText id="foto" value="#{funcionarioBean.funcionario.foto}" />
+
+			<p:outputLabel value="usuario alteração: "></p:outputLabel>
+			<p:inputText id="usuario" value="#{funcionarioBean.funcionario.usuario}" readonly="true" />
+
+			<p:outputLabel value="data ultima alteração: "></p:outputLabel>
+			<p:inputText id="dtultalt" value="#{funcionarioBean.funcionario.dataUltimaAlteracao}" readonly="true" />
+			
+
+		</p:panelGrid>
+
+		<p:panelGrid rendered="#{funcionarioBean.funcionario.id ne null}">
+
+			<img src="#{funcionarioBean.funcionario.foto}" width="354px"
+				height="472px" />
+
+			<p:fileUpload value="#{funcionarioBean.file}" mode="simple"
+				skinSimple="true" />
+
+			<p:commandButton value="Submit" ajax="false"
+				actionListener="#{funcionarioBean.upload}" disabled="false" />
+		</p:panelGrid>
+
+		<p:toolbar>
+			<f:facet name="left">
+				<p:commandButton value="Exclui" style="margin-right:20px;"
+					action="#{funcionarioBean.excluir}" />
+			</f:facet>
+			<f:facet name="right">
+				<p:commandButton value="Grava" style="margin-right:20px;"
+					action="#{funcionarioBean.gravar}" />
+				<p:commandButton value="Retorna" style="margin-right:20px;"
+					action="pesquisa" />
+
+			</f:facet>
+		</p:toolbar>
+	</h:form>
+
+</h:body>
+</html>
