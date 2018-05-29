@@ -6,7 +6,7 @@ import org.apache.commons.mail.SimpleEmail;
 public class MailService {
 	
 	private final static String userAuthentication = "educapps2009@gmail.com";
-	private final static String passwordUserAuthentication = "l1m43r1c";
+	private final static String passwordUserAuthentication = "teste123";
 	private final static String sender = "educapps2009@gmail.com";
 	private final static String smtp = "smtp.gmail.com";
 	private final static boolean authentication = true;
